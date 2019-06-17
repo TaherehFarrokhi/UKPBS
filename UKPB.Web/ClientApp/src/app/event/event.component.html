@@ -1,0 +1,60 @@
+<div class="row">
+  <div class="col">
+    <a [routerLink]="['/']">Back to the list</a>
+  </div>
+</div>
+
+<div class="row" *ngIf="loading">
+  <div class="col">
+    Loading Events ...
+  </div>
+</div>
+
+<div class="row" *ngIf="!loading">
+  <div class="col">
+    <table class="table table-sm">
+      <tbody>
+        <tr>
+          <td>Description</td>
+          <td>{{ event.description }}</td>
+        </tr>
+        <tr>
+          <td>Start Date</td>
+          <td>{{ event.startDate | date: 'dd/MM/yyyy hh:mm' }}</td>
+        </tr>
+        <tr>
+          <td>End Date</td>
+          <td>{{ event.endDate | date: 'dd/MM/yyyy hh:mm' }}</td>
+        </tr>
+        <tr>
+          <td>Category</td>
+          <td>{{ event.category }}</td>
+        </tr>
+        <tr>
+          <td>Members</td>
+          <td>
+            <span *ngIf="event.members.length === 0"
+              >No Member for this Event</span
+            >
+            <table class="table table-sm" *ngIf="event.members.length !== 0">
+              <thead class="thead-dark">
+                <tr>
+                  <th>Title</th>
+                  <th>Member from</th>
+                  <th>Party</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let member of event.members">
+                  <td>{{ member.fullTitle }}</td>
+                  <td>{{ member.memberFrom | date: 'dd/MM/yyyy' }}</td>
+                  <td>{{ member.party }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

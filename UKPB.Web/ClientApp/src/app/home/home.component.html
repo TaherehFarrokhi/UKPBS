@@ -1,0 +1,52 @@
+<div class="row">
+  <div class="col-12 col-md-4 form-group">
+    <input
+      type="text"
+      placeholder="Filter By To Date"
+      class="form-control input-sm"
+      bsDaterangepicker
+      [(ngModel)]="dateRange"
+      [bsConfig]="{ isAnimated: true }"
+    />
+  </div>
+  <div class="col-12 col-md-8 form-group">
+    <button class="btn btn-primary" (click)="reload()">
+      Reload Events
+    </button>
+  </div>
+</div>
+
+<div class="row" *ngIf="loading">
+  <div class="col">
+    Loading Events ...
+  </div>
+</div>
+
+<div class="row" *ngIf="!loading">
+  <div class="col">
+    <table class="table table-sm">
+      <thead class="thead-dark">
+        <tr>
+          <th>#</th>
+          <th>Start</th>
+          <th>End</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let event of events; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td class="nowrap">
+            {{ event.startDate | date: 'dd/MM/yyyy hh:mm' }}
+          </td>
+          <td class="nowrap">{{ event.endDate | date: 'dd/MM/yyyy hh:mm' }}</td>
+          <td>
+            <a [routerLink]="['/', event.id, event.startDate]">{{
+              event.description
+            }}</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
