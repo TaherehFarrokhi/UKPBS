@@ -31,6 +31,7 @@
           <th>Start</th>
           <th>End</th>
           <th>Description</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -41,9 +42,12 @@
           </td>
           <td class="nowrap">{{ event.endDate | date: 'dd/MM/yyyy hh:mm' }}</td>
           <td>
-            <a [routerLink]="['/', event.id, event.startDate]">{{
-              event.description
-            }}</a>
+            {{ event.description }}
+          </td>
+          <td class="nowrap">
+            <a [routerLink]="['/', event.id, event.startDate]"
+              ><span class="btn btn-primary">View Details</span></a
+            >
           </td>
         </tr>
       </tbody>
