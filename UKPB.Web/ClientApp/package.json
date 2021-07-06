@@ -8,7 +8,9 @@
     "build:ssr": "ng run UKPB.Web:server:dev",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "private": true,
   "dependencies": {
@@ -30,7 +32,8 @@
     "ngx-bootstrap": "^4.3.0",
     "popper.js": "^1.15.0",
     "rxjs": "^6.5.2",
-    "zone.js": "^0.9.1"
+    "zone.js": "^0.9.1",
+    "snyk": "^1.653.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.800.3",
@@ -55,5 +58,6 @@
     "protractor": "~5.4.0",
     "ts-node": "~5.0.1",
     "tslint": "~5.9.1"
-  }
+  },
+  "snyk": true
 }
